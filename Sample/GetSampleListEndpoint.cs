@@ -8,13 +8,10 @@ public class GetSampleListEndpoint : EndpointWithoutRequest<List<GetSampleListRe
         Description(x => x.WithName("GetSamples"));
         Version(1);
 
-        // This works
         Policies("UsersOnly");
-
-        // This don't
-        //Claims("UserID");
-        //Roles("Admin", "User");
-        //Permissions("ManageUsers");
+        Claims("UserID");
+        Roles("Admin", "User");
+        Permissions("ManageUsers");
     }
 
     public override async Task HandleAsync(CancellationToken ct)
